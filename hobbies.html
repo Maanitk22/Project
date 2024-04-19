@@ -16,7 +16,7 @@
         <p> A trip to Siswan Dam </p> 
         
         <button id="myBtn" onclick="myFunction()">Pause</button>
-        <button id="xo" onclick="myFunction()">Next</button>
+        <button id="btn" onclick="changevideo()"> Next </button>
       </div>
    
     <style>
@@ -55,6 +55,14 @@
   color: black;
 }
 
+#btn {
+  
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
 
 #xo{
   background-color: black;
@@ -63,13 +71,12 @@
     </style>
 
         <script>
-// Get the video
+
 var video = document.getElementById("myVideo");
 
-// Get the button
 var btn = document.getElementById("myBtn");
 
-// Pause and play the video, and change the button text
+
 function myFunction() {
   if (video.paused) {
     video.play();
@@ -80,7 +87,12 @@ function myFunction() {
   }
 }
 
+function changevideo() {
+  var video = document.getElementById("backgroundVideo");
+  video.src = "E:\mK\WhatsApp Video 2023-09-19 at 22.36.27.mp4";
+}
     </script>
     
+
 </body>
 </html>
