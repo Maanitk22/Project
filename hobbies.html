@@ -2,97 +2,99 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="Hobbies" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hobbies</title>
+    <style>
+        /* Video Background */
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        /* Content Styles */
+        .content {
+            position: fixed;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Button Styles */
+        #myBtn, #btn {
+            width: 200px;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #myBtn:hover, #btn:hover {
+            background: #ddd;
+            color: black;
+        }
+    </style>
 </head>
 <body>
+    <!-- Background Video -->
     <video autoplay loop id="myVideo">
         <source src="hh.mp4" type="video/mp4">
-      </video>
-      
-      
-      <div class="content">
-        <h1>Video editing</h1>
-        <p> A trip to Siswan Dam </p> 
-        
-        <button id="myBtn" onclick="myFunction()">Pause</button>
-        <button id="btn" onclick="changevideo()"> Next </button>
-      </div>
-   
-    <style>
-        
-#myVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
-
-
-.content {
-  position: fixed;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
-}
-
-/* Style the button used to pause/play the video */
-#myBtn {
-  width: 200px;
-  font-size: 18px;
-  padding: 10px;
-  border: none;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-#myBtn:hover {
-  background: #ddd;
-  color: black;
-}
-
-#btn {
-  
-  border: none;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-
-#xo{
-  background-color: black;
-  color: #f1f1f1;
-}
-    </style>
-
-        <script>
-
-var video = document.getElementById("myVideo");
-
-var btn = document.getElementById("myBtn");
-
-
-function myFunction() {
-  if (video.paused) {
-    video.play();
-    btn.innerHTML = "Pause";
-  } else {
-    video.pause();
-    btn.innerHTML = "Play";
-  }
-}
-
-function changevideo() {
-  var video = document.getElementById("backgroundVideo");
-  video.src = "E:\mK\WhatsApp Video 2023-09-19 at 22.36.27.mp4";
-}
-    </script>
+        <!-- Fallback for browsers that do not support the video element -->
+        Your browser does not support HTML5 video.
+    </video>
     
+    <!-- Content Overlay -->
+    <div class="content">
+        <h1 id="videoTitle">Video Editing</h1> <!-- Heading with id for dynamic change -->
+        <p id="videoDescription">A trip to Siswan Dam</p> <!-- Paragraph with id for dynamic change -->
+        
+        <!-- Buttons to control video -->
+        <button id="myBtn" onclick="myFunction()">Pause</button>
+        <button id="btn" onclick="changeVideo()">Next</button>
+    </div>
+   
+    <script>
+        var video = document.getElementById("myVideo");
+        var btn = document.getElementById("myBtn");
+        var title = document.getElementById("videoTitle"); // Element reference for the heading
+        var description = document.getElementById("videoDescription"); // Element reference for the description
 
+        // Function to pause/play the video
+        function myFunction() {
+            if (video.paused) {
+                video.play();
+                btn.innerHTML = "Pause";
+            } else {
+                video.pause();
+                btn.innerHTML = "Play";
+            }
+        }
+
+        // Function to change the video source to "html.mp4", update the title, and remove the description
+        function changeVideo() {
+            // Pause the current video before changing the source
+            video.pause();
+            
+            // Update the video source
+            video.getElementsByTagName("source")[0].src = "html.mp4";
+            
+            // Update the heading text to "Beat Production"
+            title.innerHTML = "Beat Production";
+
+            // Remove the description text
+            description.innerHTML = ""; // Clears the text content
+
+            // Load the new video and play
+            video.load();
+            video.play();
+        }
+    </script>
 </body>
 </html>
